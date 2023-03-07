@@ -74,7 +74,7 @@
     $ ~~up streamlit
     ```
 
-# [TroubleShooting](trouble_shooting)
+# [TroubleShooting](trouble_shooting.md)
 問題が発生した場合に読んでください。
 
 # References
