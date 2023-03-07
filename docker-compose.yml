@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  jupyterlab:
+    container_name: "dockerlab-jupyterlab"
+    user: ${UID}:${GID}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+        UNAME: ${UNAME}
+        GNAME: ${GNAME}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./workspace:/workspace
+    working_dir: "/workspace"
+    command: jupyter-lab --ip 0.0.0.0 --port=8080 --allow-root --no-browser --NotebookApp.token=""
+
+  streamlit:
+    container_name: "dockerlab-streamlit"
+    user: ${UID}:${GID}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+        UNAME: ${UNAME}
+        GNAME: ${GNAME}
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./workspace:/workspace
+    working_dir: "/workspace"
+    command: streamlit run app.py
+
