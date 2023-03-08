@@ -21,6 +21,6 @@ RUN chmod +x /home/${UNAME}/setVolumePermission.sh
 CMD ["sh", "-c", "/home/${UNAME}/setVolumePermission.sh"]
 
 ## Install python package
-COPY ./requirements.txt requirements.txt
+COPY ./requirements_gpu.txt requirements.txt
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt --find-links https://download.pytorch.org/whl/torch_stable.html
+    pip install  --no-cache-dir -r requirements.txt --find-links https://download.pytorch.org/whl/torch_stable.html

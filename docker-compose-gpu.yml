@@ -5,7 +5,7 @@ services:
     user: ${UID}:${GID}
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.gpu
       args:
         UID: ${UID}
         GID: ${GID}
@@ -27,7 +27,7 @@ services:
     user: ${UID}:${GID}
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.gpu
       args:
         UID: ${UID}
         GID: ${GID}
