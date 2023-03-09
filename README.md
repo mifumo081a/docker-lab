@@ -100,6 +100,8 @@
 docker関係のドキュメントです
 
 # References
+1. [入門 Docker](https://y-ohgi.com/introduction-docker/)
+2. [Docker documents ja, WindowsへのDocker Desktopのインストール](https://docs.docker.jp/docker-for-windows/install.html)
 1. [Zenn, WSL2+Docker DesktopでPytorchのGPU環境を構築する](https://zenn.dev/takeguchi/articles/361e12a5321095)
 2. [Zenn, docker-comopseで環境によってDockerfileのCMDを使い分けたい](https://zenn.dev/akira_kashihara/articles/073b4b19a13840)
 3. [Qiita, docker-composeでGPU環境(+PyTorch)を構築する](https://qiita.com/Sicut_study/items/32eb5dbaec514de4fc45)

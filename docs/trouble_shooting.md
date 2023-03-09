@@ -8,7 +8,7 @@
     これは権限の問題である。`docker-compose up`を実行するユーザーを`docker`グループに追加する必要がある。  
     したがって、次のコマンドを実行し、ユーザーをグループに追加し、dockerを再起動する。
     ```sh
-    $ sudo usermod -aG docker [username]
+    $ sudo usermod -aG docker $USER
     $ su - $USER
     $ sudo systemctl restart docker
     ```
