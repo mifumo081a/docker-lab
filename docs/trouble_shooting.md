@@ -53,7 +53,7 @@
     version = int(package_name.split('-')[-2)
     ```
 
-- nvidia-smiを実行したときに，`Unable to determine the device handle for GPU 0000:0?:00.0: Not Found`というエラーが起こったら[Link](https://forums.developer.nvidia.com/t/unable-to-determine-the-device-handle-for-gpu-000000-0-not-found/231710)
+- `nvidia-smi`を実行したときに，`Unable to determine the device handle for GPU 0000:0?:00.0: Not Found`というエラーが起こったら[Link](https://forums.developer.nvidia.com/t/unable-to-determine-the-device-handle-for-gpu-000000-0-not-found/231710)
     ※?の箇所は1だったり7だったりする
 
     - recommendedなnvidia-driverの番号を覚える
@@ -63,6 +63,13 @@
     - UbuntuのApplicationsからAdditional driversを探し，上記で見つけた番号の **non** `open-kernel`のものに切り替える
     - `Apply Changes`を押下し，`Restart`を押下し再起動
     - `nvidia-smi`コマンドで確認
+
+- `nvidia-smi`を実行した時に`Failed to initialize NVML: Driver/library version mismatch`というエラーが発生した時[Link](https://qiita.com/ell/items/be3d3527b723f70f888d)
+    - 再起動する
+        ```sh
+        $ sudo reboot
+        ```
+
 
 
 ## jupyter

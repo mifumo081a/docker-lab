@@ -8,30 +8,31 @@
 
 # How to use
 ## Preparations
-1. Dockerをインストールする
+1. Dockerをインストールする[Link](./docs/docker_doc.md)
 2. docker compose(ver1.28.0>=)をインストールする
     - Mac, Windowsの場合はDockerインストール時に入ってる
-3. 次のコマンドを実行して`.env`ファイルを作成する
+3. **次のコマンドを実行して`.env`ファイルを作成する**
     - For Windows
         ```sh
-        $ bash set_DotEnv.sh
+        $ bash ./scripts/set_DotEnv.sh
         ```
     - For Linux or Mac
         ```sh
-        $ sh set_DotEnv.sh
+        $ sh ./scripts/set_DotEnv.sh
         ```
 4. GPUを使用するなら次を実行する
     - GPUドライバをインストールする
-    - Nvidia Container Toolkitをセットアップする
+        - [Ubuntuの場合](./docs/ubuntu2204_GPU_machine_setup.md)
+    - **Nvidia Container Toolkit**をセットアップする
         - For Windows
             WSLでgpuSetup.shを実行する
             ```sh
-            $ bash gpuSetup.sh
+            $ bash ./scripts/install-nvidia-container-toolkit.sh
             ```
         - For Linux or Mac
             gpu_setup.shを実行する
             ```sh
-            $ sh gpuSetup.sh
+            $ sh ./scripts/install-nvidia-container-toolkit.sh
             ```
     - 完了したらDocker Containerでnvidia-smiを実行して確認する
         ```sh
@@ -42,7 +43,7 @@
 2. build image
     - With GPU
         ```sh
-        $ docker-compose -f docker_gpu.yml build
+        $ docker-compose -f gpu.yml build
         ```
 
     - Without GPU
@@ -52,7 +53,7 @@
 3. containerを起動する
     - With GPU
         ```sh
-        $ docker-compose -f docker-compose-gpu.yml up
+        $ docker-compose -f gpu.yml up
         ```
 
     - Without GPU
@@ -93,11 +94,13 @@
     - ローカルのブラウザから`localhost:8080`にアクセスすると、jupyterを実行することができる。
 
 
-# [Trouble shooting](docs/trouble_shooting.md)
+# [Trouble shooting](./docs/trouble_shooting.md)
 問題が発生した場合に読んでください。
 
-# [Docker document](docs/docker_doc.md)
+# [Docker document](./docs/docker_doc.md)
 docker関係のドキュメントです
+
+# [GPU Machine setup Ubuntu22.04](./docs/ubuntu2204_GPU_machine_setup.md)
 
 # References
 1. [入門 Docker](https://y-ohgi.com/introduction-docker/)

@@ -24,18 +24,43 @@
     - 画面右上の「A」アイコンをクリックし，`Japanese(Mozc)`を選択する．
 
 3. NVIDIA Driverをインストールする [Link](https://hirooka.pro/nvidia-driver-ubuntu-22-04/)
-    - まず，コマンドラインを開く．
-        - `Ctrl+Alt+t`もしくは，左上の`Activities`から探す．
+    - まず，コマンドラインを開く
+        `Ctrl+Alt+t`もしくは，左上の`Activities`から探す．
+    - 現状入っているCUDA、nvidia-driverの確認
+        ```sh
+        $ dpkg -l | grep nvidia
+        $ dpkg -l | grep cuda
+        ```
+    - 現状入っているCUDA、nvidia-driverの削除
+        ```sh
+        $ sudo apt-get --purge remove nvidia-*
+        $ sudo apt-get --purge remove cuda-*
+        ```
     - インストールできそうなドライバー一覧を確認してみる．
         ```sh
+        $ sudo apt update
         $ ubuntu-drivers devices
         ```
-    - recommended(推奨)されているドライバをインストールし，OSを再起動する．
-        ```sh
-        $ sudo ubuntu-drivers install
-        $ sudo reboot
-        ```
-    - `nvidia-smi`コマンドを実行し，ドライバのバージョンとCUDAのバージョンを確認する．
+        - `ubuntu-drivers`が使えない場合
+            ```sh
+            $ sudo apt install -y ubuntu-drivers-common
+            ```
+    - recommended(推奨)されているドライバをインストールし、OSを再起動する[Link](https://qiita.com/karaage0703/items/e79a8ad2f57abc6872aa)
+        - **autoinstall**する方法もあるが、次のようなトラブルが散見されるため**非推奨**である
+            - 黒画面になる
+            - ネットワークが突然死ぬ
+        - **手動(apt)でインストールする**
+            1. インストールするべきドライバを確認する（上記）
+                ※`-open`とされているドライバーをインストールするとトラブルが発生することが多い。`recommended`が付いているバージョンの`**non** -open`をインストールするべし[Link](https://qiita.com/y-vectorfield/items/72bfb66d8ec85847fe2f)。
+            2. aptでお目当てのドライバをインストールする
+                ```sh
+                $ sudo apt install nvidia-driver-xxx
+                ```
+            3. 再起動する
+                ```sh
+                $ sudo reboot
+                ```
+    - `nvidia-smi`コマンドを実行し、ドライバのバージョンとCUDAのバージョンを確認する
         ```sh
         $ nvidia-smi
         ```

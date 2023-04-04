@@ -2,7 +2,6 @@
 ## Dockerとは
 ImageとContainerというコンポーネントを基にLinuxカーネルの機能を用いて１つのプロセスとして隔離された仮想環境を実現するもの。
 
-# Quick start
 ## インストール
 - For Windows
     1. WSL2のインストール
@@ -17,6 +16,7 @@ ImageとContainerというコンポーネントを基にLinuxカーネルの機�
     3. Windowsの場合は、docker-composeもインストールされている。
 
 - For Linux(Ubuntu LTS 18.04, 20.04, and 22.04)
+    ※`/scripts/install-docker.sh`を実行すると一括で出来ます。実行したら`$ sudo shutdown -r now`で再起動してください。
     - Docker
         1. 次のコマンドを実行する[Link](https://docs.docker.com/engine/install/ubuntu/)
             ```sh
@@ -71,6 +71,27 @@ ImageとContainerというコンポーネントを基にLinuxカーネルの機�
             $ newgrp docker
             ```
 
+## アンインストール
+- docker
+    ```sh
+    $ sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    $ sudo rm -rf /var/lib/docker
+    $ sudo rm -rf /var/lib/containerd
+    ```
+- docker-compose
+    ```sh
+    $ sudo apt remove docker-compose; sudo apt autoremove
+    ```
+
+## NVIDIA Container Toolkit(NVIDIA Docker)のインストール[Link](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+※`/scripts/install-nvidia-container-toolkit.sh`を実行すると一括でできます。
+
+- アンインストール
+    ```sh
+    $ sudo apt remove nvidia-container-toolkit; sudo apt autoremove
+    ```
+
+
 # Appendix
 ## 節約術
 
@@ -90,3 +111,14 @@ ImageとContainerというコンポーネントを基にLinuxカーネルの機�
         ```sh
         $ docker image prune
         ```
+
+## docker-composeのイメージでGPUを使う方法[Link](https://qiita.com/Sicut_study/items/32eb5dbaec514de4fc45)
+- `docker-compose.yml`に次を追加する
+    ```yml
+    (省略)
+        runtime: nvidia
+        environment:
+        - NVIDIA_VISIBLE_DEVICES=all
+        - NVIDIA_DRIVER_CAPABILITIES=all
+    ```
+- そして`Dockerfile`のイメージは`Python:3.7（>3.7）`や`nvidia/cuda:11.0-devel-ubuntu20.04`を利用する

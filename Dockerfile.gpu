@@ -15,7 +15,7 @@ RUN echo "Starting with UID: ${UID}, UNAME: ${UNAME}, GID: ${GID}, GNAME: ${GNAM
 RUN groupadd -g ${GID} ${GNAME}
 RUN useradd -u ${UID} -g ${GNAME} -m ${UNAME}
 
-COPY ./setVolumePermission.sh /home/${UNAME}
+COPY ./scripts/setVolumePermission.sh /home/${UNAME}
 RUN chmod +x /home/${UNAME}/setVolumePermission.sh
 
 CMD ["sh", "-c", "/home/${UNAME}/setVolumePermission.sh"]
