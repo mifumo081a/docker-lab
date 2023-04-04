@@ -5,18 +5,18 @@ ImageとContainerというコンポーネントを基にLinuxカーネルの機�
 ## インストール
 - For Windows
     1. WSL2のインストール
-        管理者権限でコマンドプロンプトを起動し、以下のコマンドを実行する
-        ```sh
-        wsl --install
-        ```
+        - 管理者権限でコマンドプロンプトを起動し、以下のコマンドを実行する
+            ```sh
+            wsl --install
+            ```
     1. `Docker Desktop Installer.exe`を起動する
-        `Docker Desktop Installer.exe`は[Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/)からダウンロードできる
+        - `Docker Desktop Installer.exe`は[Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/)からダウンロードできる
     2. 確認画面が出たら、`Use WSL 2 instead of Hyper-V`をチェックして進める。
     2. 管理者(admin)アカウントと使用中のアカウントが異なる場合、`docker-users`グループにユーザを追加する必要がある。Windowsの`コンピュータを管理`を管理者として起動し、`ローカルグループ ユーザーとグループ > グループ > docker-users`を右クリックし、対象ユーザをグループに追加する。ログアウトすると設定が有効になっている。
     3. Windowsの場合は、docker-composeもインストールされている。
 
 - For Linux(Ubuntu LTS 18.04, 20.04, and 22.04)
-    ※`/scripts/install-docker.sh`を実行すると一括で出来ます。実行したら`$ sudo shutdown -r now`で再起動してください。
+    - ※`/scripts/install-docker.sh`を実行すると一括で出来ます。実行したら`$ sudo shutdown -r now`で再起動してください。
     - Docker
         1. 次のコマンドを実行する[Link](https://docs.docker.com/engine/install/ubuntu/)
             ```sh
