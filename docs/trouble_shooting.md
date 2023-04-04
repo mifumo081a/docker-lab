@@ -1,6 +1,6 @@
 # Trouble shooting
 
-## docker
+## Docker、docker-compose
 - `docker-compose up`等をしたときに次のエラーが起こる可能性がある。
     ```
     docker.errors.DockerException: Error while fetching server API version
@@ -37,7 +37,7 @@
     $ grep -l "nvidia.github.io" /etc/apt/sources.list.d/* | grep -vE "/nvidia-container-toolkit.list\$"
     ```
 
-## GPU machine
+## Ubuntu GPU
 - ubuntu-drivers installで`UnboudLocalError`が起こったら
     ```sh
     $ sudo ubuntu-drivers install
@@ -69,8 +69,6 @@
         ```sh
         $ sudo reboot
         ```
-
-
 
 ## jupyter
 - ポートが既に使用されている状態の場合

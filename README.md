@@ -8,10 +8,9 @@
 
 # How to use
 ## Preparations
-1. Dockerをインストールする[Link](./docs/docker_doc.md)
-2. docker compose(ver1.28.0>=)をインストールする
-    - Mac, Windowsの場合はDockerインストール時に入ってる
-3. **次のコマンドを実行して`.env`ファイルを作成する**
+1. Docker、docker-composeをインストールする[Link](./docs/docker_doc.md)
+    - docker compose(ver1.28.0>=)をインストールする（Mac, Windowsの場合はDockerインストール時に入ってる）
+2. **次のコマンドを実行して`.env`ファイルを作成する**
     - For Windows
         ```sh
         $ bash ./scripts/set_DotEnv.sh
@@ -20,7 +19,7 @@
         ```sh
         $ sh ./scripts/set_DotEnv.sh
         ```
-4. GPUを使用するなら次を実行する
+3. GPUを使用するなら次を実行する
     - GPUドライバをインストールする
         - [Ubuntuの場合](./docs/ubuntu2204_GPU_machine_setup.md)
     - **Nvidia Container Toolkit**をセットアップする

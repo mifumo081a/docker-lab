@@ -1,5 +1,6 @@
 # Ubuntu22.04 GPUマシンのセットアップ
 
+## Ubuntuセットアップ
 1. USBインストーラーを用意し，インストールする
     - USBインストーラーを用意する
         - [Download Ubuntu Desktop](https://ubuntu.com/download/desktop)にアクセスする
@@ -23,70 +24,70 @@
         - `Input Sources`に`Japanese(Mozc)`が追加されていることを確認する．
     - 画面右上の「A」アイコンをクリックし，`Japanese(Mozc)`を選択する．
 
-3. NVIDIA Driverをインストールする [Link](https://hirooka.pro/nvidia-driver-ubuntu-22-04/)
-    - まず，コマンドラインを開く
-        `Ctrl+Alt+t`もしくは，左上の`Activities`から探す．
-    - 現状入っているCUDA、nvidia-driverの確認
+## NVIDIA Driverセットアップ [Link](https://hirooka.pro/nvidia-driver-ubuntu-22-04/)
+1. まず，コマンドラインを開く
+    `Ctrl+Alt+t`もしくは，左上の`Activities`から探す．
+2. 現状入っているCUDA、nvidia-driverの確認
+    ```sh
+    $ dpkg -l | grep nvidia
+    $ dpkg -l | grep cuda
+    ```
+3. 現状入っているCUDA、nvidia-driverの削除
+    ```sh
+    $ sudo apt-get --purge remove nvidia-*
+    $ sudo apt-get --purge remove cuda-*
+    ```
+4. インストールできそうなドライバー一覧を確認してみる．
+    ```sh
+    $ sudo apt update
+    $ ubuntu-drivers devices
+    ```
+    - `ubuntu-drivers`が使えない場合
         ```sh
-        $ dpkg -l | grep nvidia
-        $ dpkg -l | grep cuda
+        $ sudo apt install -y ubuntu-drivers-common
         ```
-    - 現状入っているCUDA、nvidia-driverの削除
-        ```sh
-        $ sudo apt-get --purge remove nvidia-*
-        $ sudo apt-get --purge remove cuda-*
-        ```
-    - インストールできそうなドライバー一覧を確認してみる．
-        ```sh
-        $ sudo apt update
-        $ ubuntu-drivers devices
-        ```
-        - `ubuntu-drivers`が使えない場合
+5. recommended(推奨)されているドライバをインストールし、OSを再起動する [Link](https://qiita.com/karaage0703/items/e79a8ad2f57abc6872aa)
+    - **autoinstall**する方法もあるが、次のようなトラブルが散見されるため**非推奨**である
+        - 黒画面になる
+        - ネットワークが突然死ぬ
+    - **手動(apt)でインストールする**
+        1. インストールするべきドライバを確認する（上記）
+            ※`-open`とされているドライバーをインストールするとトラブルが発生することが多い。`recommended`が付いているバージョンの`**non** -open`をインストールするべし[Link](https://qiita.com/y-vectorfield/items/72bfb66d8ec85847fe2f)。
+        2. aptでお目当てのドライバをインストールする
             ```sh
-            $ sudo apt install -y ubuntu-drivers-common
+            $ sudo apt install nvidia-driver-xxx
             ```
-    - recommended(推奨)されているドライバをインストールし、OSを再起動する[Link](https://qiita.com/karaage0703/items/e79a8ad2f57abc6872aa)
-        - **autoinstall**する方法もあるが、次のようなトラブルが散見されるため**非推奨**である
-            - 黒画面になる
-            - ネットワークが突然死ぬ
-        - **手動(apt)でインストールする**
-            1. インストールするべきドライバを確認する（上記）
-                ※`-open`とされているドライバーをインストールするとトラブルが発生することが多い。`recommended`が付いているバージョンの`**non** -open`をインストールするべし[Link](https://qiita.com/y-vectorfield/items/72bfb66d8ec85847fe2f)。
-            2. aptでお目当てのドライバをインストールする
-                ```sh
-                $ sudo apt install nvidia-driver-xxx
-                ```
-            3. 再起動する
-                ```sh
-                $ sudo reboot
-                ```
-    - `nvidia-smi`コマンドを実行し、ドライバのバージョンとCUDAのバージョンを確認する
-        ```sh
-        $ nvidia-smi
-        ```
+        3. 再起動する
+            ```sh
+            $ sudo reboot
+            ```
+6. `nvidia-smi`コマンドを実行し、ドライバのバージョンとCUDAのバージョンを確認する
+    ```sh
+    $ nvidia-smi
+    ```
 
-4. Windowsリモートデスクトップでアクセスできるようにする
-    - コマンドラインからリモートデスクトップをインストールします
-        ```sh
-        $ sudo apt install xrdp
-        ```
-    - MATEデスクトップを導入するために次のコマンドを実行してください．
-        ```sh
-        $ sudo apt install mate-desktop-environment
-        $ sudo apt install mate-desktop-environment-extras
-        ```
-    - `/etc/xrdp/startwm.sh`を編集し，最終行の`./etc/X11/Xsession`を消して`mate-session`に変更してください
+## Windowsリモートデスクトップでアクセスできるようにする
+1. コマンドラインからリモートデスクトップをインストールします
+    ```sh
+    $ sudo apt install xrdp
+    ```
+2. MATEデスクトップを導入するために次のコマンドを実行してください．
+    ```sh
+    $ sudo apt install mate-desktop-environment
+    $ sudo apt install mate-desktop-environment-extras
+    ```
+3. `/etc/xrdp/startwm.sh`を編集し，最終行の`./etc/X11/Xsession`を消して`mate-session`に変更してください
 
-    - リモートデスクトップを起動してください
-        ```sh
-        $ sudo service xrdp restart
-        ```
-    - ログアウトし，windowsリモートデスクトップでアクセスしてください．
-        - ログアウトをしていないと，アクセスした時に画面が表示されなくなるため，必ずログアウトしてください．
-        - もし，画面が真っ黒な場合はGPUマシンのOSを再起動してください
+4. リモートデスクトップを起動してください
+    ```sh
+    $ sudo service xrdp restart
+    ```
+5. ログアウトし，windowsリモートデスクトップでアクセスしてください．
+    - ログアウトをしていないと，アクセスした時に画面が表示されなくなるため，必ずログアウトしてください．
+    - もし，画面が真っ黒な場合はGPUマシンのOSを再起動してください
 
 
-5. gitをインストールする
+## gitをインストールする
     - aptを最新版にアップデートしてください
     ```sh
     $ sudo apt update
