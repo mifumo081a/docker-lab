@@ -13,11 +13,11 @@
 2. **次のコマンドを実行して`.env`ファイルを作成する**
     - For Windows
         ```sh
-        $ bash ./scripts/set_DotEnv.sh
+        $ bash ./scripts/setDotEnv.sh
         ```
     - For Linux or Mac
         ```sh
-        $ sh ./scripts/set_DotEnv.sh
+        $ sh ./scripts/setDotEnv.sh
         ```
 3. GPUを使用するなら次を実行する
     - GPUドライバをインストールする
