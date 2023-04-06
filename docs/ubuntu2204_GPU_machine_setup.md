@@ -25,6 +25,7 @@
     - 画面右上の「A」アイコンをクリックし，`Japanese(Mozc)`を選択する．
 
 ## NVIDIA Driverセットアップ [Link](https://hirooka.pro/nvidia-driver-ubuntu-22-04/)
+※BIOSのセキュアブートを無効化しないと、ドライバのインストール終盤に`Configuring Secure Boot`が発生し、ドライバのインストールをやり直すことになります。一応、そうなった場合でも対処はできますが、出来ているのかイマイチわかりずらいためおすすめしません。
 1. まず，コマンドラインを開く
     `Ctrl+Alt+t`もしくは，左上の`Activities`から探す．
 2. 現状入っているCUDA、nvidia-driverの確認
@@ -49,7 +50,7 @@
 5. recommended(推奨)されているドライバをインストールし、OSを再起動する [Link](https://qiita.com/karaage0703/items/e79a8ad2f57abc6872aa)
     - **autoinstall**する方法もあるが、次のようなトラブルが散見されるため**非推奨**である
         - 黒画面になる
-        - ネットワークが突然死ぬ
+        - ネットワークが突然死ぬ（Ethernetドライバが消える）
     - **手動(apt)でインストールする**
         1. インストールするべきドライバを確認する（上記）
             ※`-open`とされているドライバーをインストールするとトラブルが発生することが多い。`recommended`が付いているバージョンの`**non** -open`をインストールするべし[Link](https://qiita.com/y-vectorfield/items/72bfb66d8ec85847fe2f)。
