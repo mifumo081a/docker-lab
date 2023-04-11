@@ -1,12 +1,26 @@
 # docker-lab
-深層学習の実験・デモをするためのDocker環境です。
 
-## Contents
+## What is this
+
+次を内包する実験・デモ環境を提供するDocker環境です。
 - jupyter lab
 - streamlit
-- pytorch with GPU
+- pytorch with CUDA
 
+# Contents
+- [How to use](#sec1)
+    - [Preparations](#subsec1-1)
+    - [Start project](#subsec1-2)
+    - [別マシンのブラウザからjupyterへアクセスする方法](#subsec1-3)
+- [Appendix](#sec2)
+    - [Trouble shooting](#subsec2-1)
+    - [Docker document](#subsec2-2)
+    - [GPU Machine setup Ubuntu 22.04](#subsec2-3)
+- [References](#sec3)
+
+<a id="sec1"></a>
 # How to use
+<a id="subsec1-1"></a>
 ## Preparations
 1. Docker、docker-composeをインストールする[Link](./docs/docker_doc.md)
     - docker compose(ver1.28.0>=)をインストールする（Mac, Windowsの場合はDockerインストール時に入ってる）
@@ -37,6 +51,8 @@
         ```sh
         $ sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
         ```
+
+<a id="subsec1-2"></a>
 ## Start project
 1. 作業するファイル等を`/workspace`内に移動してください
 2. build image
@@ -77,7 +93,8 @@
     !pip install [library]
     ```
 
-## 次の2つの方法でローカルのブラウザからjupyterにアクセスできる
+<a id="subsec1-3"></a>
+## 別マシンのブラウザからjupyterへアクセスする方法
 1. ip:ポート番号で検索する
     - 8080等のポートを解法する
     - jupyter等でパスワードを設定する（任意）
@@ -93,14 +110,20 @@
     - ローカルのブラウザから`localhost:8080`にアクセスすると、jupyterを実行することができる。
 
 
-# [Trouble shooting](./docs/trouble_shooting.md)
+<a id="sec2"></a>
+# Appendix
+<a id="subsec2-1"></a>
+## [Trouble shooting](./docs/trouble_shooting.md)
 問題が発生した場合に読んでください。
 
-# [Docker document](./docs/docker_doc.md)
+<a id="subsec2-2"></a>
+## [Docker document](./docs/docker_doc.md)
 docker関係のドキュメントです
 
-# [GPU Machine setup Ubuntu22.04](./docs/ubuntu2204_GPU_machine_setup.md)
+<a id="subsec2-3"></a>
+## [GPU Machine setup Ubuntu 22.04](./docs/ubuntu2204_GPU_machine_setup.md)
 
+<a id="sec3"></a>
 # References
 1. [入門 Docker](https://y-ohgi.com/introduction-docker/)
 2. [Docker documents ja, WindowsへのDocker Desktopのインストール](https://docs.docker.jp/docker-for-windows/install.html)
