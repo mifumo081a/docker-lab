@@ -12,7 +12,7 @@ ARG UNAME
 ARG GNAME
 
 RUN echo "Starting with UID: ${UID}, UNAME: ${UNAME}, GID: ${GID}, GNAME: ${GNAME}"
-RUN groupadd -g ${GID} ${GNAME}
+RUN groupadd -g ${GID} -f ${GNAME}
 RUN useradd -u ${UID} -g ${GNAME} -m ${UNAME}
 
 COPY ./scripts/setVolumePermission.sh /home/${UNAME}

@@ -11,6 +11,7 @@ services:
         GID: ${GID}
         UNAME: ${UNAME}
         GNAME: ${GNAME}
+    tty: true
     runtime: nvidia
     environment:
       NVIDIA_VISIBLE_DEVICES: all
@@ -33,6 +34,7 @@ services:
         GID: ${GID}
         UNAME: ${UNAME}
         GNAME: ${GNAME}
+    tty: true
     runtime: nvidia
     environment:
       NVIDIA_VISIBLE_DEVICES: all

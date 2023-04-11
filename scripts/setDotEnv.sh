@@ -1,2 +1,5 @@
 touch .env
-echo -e "UID=$(id -u)\nGID=$(id -g)\nUNAME=$(id -un)\nGNAME=$(id -gn)" > .env
+echo "UID=$(id -u)" > .env
+echo "GID=$(id -g)" >> .env
+echo "UNAME=$(id -un)" >> .env
+echo "GNAME=$(id -gn)" >> .env
