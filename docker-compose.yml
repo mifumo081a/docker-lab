@@ -11,6 +11,8 @@ services:
         GID: ${GID}
         UNAME: ${UNAME}
         GNAME: ${GNAME}
+    shm_size: "2gb"
+    restart: always
     tty: true
     ports:
       - "8080:8080"
@@ -30,6 +32,8 @@ services:
         GID: ${GID}
         UNAME: ${UNAME}
         GNAME: ${GNAME}
+    restart: always
+    shm_size: "2gb"
     tty: true
     ports:
       - "8501:8501"

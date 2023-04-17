@@ -11,6 +11,8 @@ services:
         GID: ${GID}
         UNAME: ${UNAME}
         GNAME: ${GNAME}
+    shm_size: "2gb"
+    restart: always
     tty: true
     runtime: nvidia
     environment:
@@ -34,6 +36,8 @@ services:
         GID: ${GID}
         UNAME: ${UNAME}
         GNAME: ${GNAME}
+    shm_size: "2gb"
+    restart: always
     tty: true
     runtime: nvidia
     environment:
