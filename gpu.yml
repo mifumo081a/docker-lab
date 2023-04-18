@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   jupyterlab:
-    container_name: "dockerlab-jupyterlab"
+    container_name: "dockerlab-jupyterlab-cuda"
     user: ${UID}:${GID}
     build:
       context: .
@@ -26,7 +26,7 @@ services:
     command: jupyter-lab --ip 0.0.0.0 --port=8080 --allow-root --no-browser --NotebookApp.token=""
 
   streamlit:
-    container_name: "dockerlab-streamlit"
+    container_name: "dockerlab-streamlit-cuda"
     user: ${UID}:${GID}
     build:
       context: .

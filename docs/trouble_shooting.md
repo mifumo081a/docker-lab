@@ -65,10 +65,21 @@ version = int(package_name.split('-')[-2)
 - `nvidia-smi`コマンドで確認
 
 ### `nvidia-smi`を実行した時に`Failed to initialize NVML: Driver/library version mismatch`というエラーが発生した時[Link](https://qiita.com/ell/items/be3d3527b723f70f888d)
-    - 再起動する
-        ```sh
-        $ sudo reboot
-        ```
+- 再起動する
+    ```sh
+    $ sudo reboot
+    ```
+
+### Docker内でGPUが使えない（`nvidia-smi`を実行したときに`Failed to initialize NVML: Unknown Error)の場合の対応[Link](https://qiita.com/k_ikasumipowder/items/5e71208b7c7ae3e4fe7c)
+- ホストマシンでは`nvidia-smi`が実行できるのに、コンテナ内では実行できないとき
+- `/etc/nvidia-container-runtime/config.toml`を次の様に書き換える
+    ```toml
+    no-cgroups = false
+    ```
+- dockerを再起動する
+    ```sh
+    sudo systemctl restart docker
+    ```
 
 ### `ubuntu-drivers`で`autoinstall`し、Ethernetドライバが消えた場合 [Link](https://www.shangtian.tokyo/entry/2022/10/07/203104)
 - 概要
