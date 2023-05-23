@@ -1,7 +1,7 @@
 FROM python:3.9
 
 RUN apt update
-RUN apt-get install  -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config
+RUN apt-get install  -y zip unzip libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config
 ENV TZ=Asia/Tokyo
 ENV TERM xterm
 
