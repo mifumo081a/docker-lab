@@ -13,6 +13,8 @@ build:
 ps:
 	docker-compose ps
 check:
+        docker ps -a
+        docekr images
         docker system df
         nvidia-smi
 clean:
