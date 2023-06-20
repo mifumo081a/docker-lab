@@ -9,7 +9,7 @@ down:
 up:
         docker-compose -f ${YML} up -d
 build:
-        docker-compse -f ${YML} build
+        docker-compose -f ${YML} build
 ps:
 	docker-compose ps
 check:
