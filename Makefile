@@ -8,6 +8,10 @@ down:
 	docker-compose down
 up:
 	docker-compose -f ${YML} up -d
+restart:
+	sudo systemctl restart docker
+	@make down
+	@make up
 build:
 	docker-compose -f ${YML} build
 ps:
