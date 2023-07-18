@@ -13,6 +13,7 @@ restart:
 	@make down
 	@make up
 build:
+	bash ./scripts/setDotEnv.sh
 	docker-compose -f ${YML} build
 ps:
 	docker-compose ps
