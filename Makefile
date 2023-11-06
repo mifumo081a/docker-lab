@@ -27,3 +27,5 @@ clean:
 	docker image prune -f
 	docker volume prune -f
 	docker network prune -f
+exec:
+	docker-compose exec jupyterlab /bin/bash
